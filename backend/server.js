@@ -10,6 +10,11 @@ import errorHandler from './middleware/errorHandler.js'
 
 import authRoutes from './routes/authRoutes.js'
 import documentRoutes from './routes/documentRoutes.js'
+import flashcardRoutes from './routes/flashcardRoutes.js'
+import aiRoutes from './routes/aiRoutes.js'
+import quizRoutes from './routes/quizRoutes.js'
+import progessRoutes from './routes/progressRoutes.js'
+
 
 // ES6 module __dirname alternative
 const __filename = fileURLToPath(import.meta.url);
@@ -34,17 +39,20 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 
+
 // Static folders for uploads
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/flashcards', flashcardRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/quizzes', quizRoutes);
+app.use('/api/progess', progressRoutes);
+
 
 app.use(errorHandler);
-
-
 
 // 404 handler
 app.use((req, res) => {

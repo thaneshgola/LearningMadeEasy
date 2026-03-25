@@ -13,7 +13,7 @@ import documentRoutes from './routes/documentRoutes.js'
 import flashcardRoutes from './routes/flashcardRoutes.js'
 import aiRoutes from './routes/aiRoutes.js'
 import quizRoutes from './routes/quizRoutes.js'
-import progessRoutes from './routes/progressRoutes.js'
+import progressRoutes from './routes/progressRoutes.js'
 
 
 // ES6 module __dirname alternative

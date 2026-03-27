@@ -4,7 +4,7 @@ import LoginPage from './pages/Auth/LoginPage';
 import RegisterPage from './pages/Auth/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import DashboardPage from './pages/Dashboard/Dashboard';
+import DashboardPage from './pages/Dashboard/DashboardPage';
 import DocumentListPage from './pages/Documents/DocumentListPage';
 import DocumentDetailPage from './pages/Documents/DocumentDetailpage';
 import FlashcardPage from './pages/Flashcards/FlashcardPage';
@@ -43,7 +43,7 @@ const App = () => {
           <Route path="/documents/:id/flashcards" element={<FlashcardPage />} />
           <Route path="/quizzes/:quizId" element={<QuizTakePage />} />
           <Route path="/quizzes/:quizId/results" element={<QuizResultPage />} />
-          <Route path="/profile" element={<profilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

@@ -12,10 +12,10 @@ import FlashcardsListPage from './pages/Flashcards/FlashcardsListPage';
 import QuizTakePage from "./pages/Quizzes/QuizTakePage";
 import QuizResultPage from "./pages/Quizzes/QuizResultPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
-import { useAuth } from './context/AuthContext';
+import { useAuth } from "./context/AuthContext";
 
 const App = () => {
-  const {isAuthenticated, loading} = useAuth();
+  const { isAuthenticated, loading } = useAuth();
 
   if(loading) {
     return(
@@ -30,7 +30,13 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element = {isAuthenticated ? <Navigate to="/dashboard" replace /> : <Navigate to="/login" replace />}
+          element={
+            isAuthenticated ? (
+              <Navigate to="/dashboard" replace /> 
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

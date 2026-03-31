@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import Spinner from "../../components/common/Spinner";
 import progressService from "../../services/progressService";
 import toast from "react-hot-toast";
-import {
-  FileText,
-  BookOpen,
-  BrainCircuit,
-  TrendingUp,
-  Clock,
-} from "lucide-react";
+import { FileText, BookOpen, BrainCircuit, TrendingUp, Clock } from "lucide-react";
 
 const DashboardPage = () => {
+
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +13,7 @@ const DashboardPage = () => {
     const fetchDashboardData = async () => {
       try {
         const data = await progressService.getDashboardData();
-        console.log("Data__getDashboardData", data);
+        console.log("Data___getDashboardData", data);
 
         setDashboardData(data.data);
       } catch (error) {
@@ -50,11 +45,11 @@ const DashboardPage = () => {
 
   const stats = [
     {
-      label: "Total documents",
+      label: "Total Documents",
       value: dashboardData.overview.totalDocuments,
       icon: FileText,
       gradient: "from-blue-400 to-cyan-500",
-      shadowColor: "shadow-blue-500/25",
+      shadowColor: 'shadow-blue-500/25',
     },
     {
       label: "Total Flashcards",
@@ -98,8 +93,7 @@ const DashboardPage = () => {
                   {stat.label}
                 </span>
                 <div
-                  className={`w-11 h-11 rounded-xl bg-linear-to-br ${stat.gradient} shadow-lg ${stat.shadowColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                >
+                  className={`w-11 h-11 rounded-xl bg-linear-to-br ${stat.gradient} shadow-lg ${stat.shadowColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className="w-5 h-5 text-white" strokeWidth={2} />
                 </div>
               </div>
@@ -109,6 +103,7 @@ const DashboardPage = () => {
             </div>
           ))}
         </div>
+
         {/*Recent Activity Section*/}
         <div className="bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl shadow-xl shadow-slate-200/50 p-8">
           <div className="flex items-center gap-3 mb-6">
@@ -121,55 +116,53 @@ const DashboardPage = () => {
           </div>
 
           {dashboardData.recentActivity &&
-          (dashboardData.recentActivity?.documents?.length > 0 ||
-            dashboardData.recentActivity?.quizzes?.length > 0) ? (
+          (dashboardData.recentActivity.documents.length > 0 ||
+            dashboardData.recentActivity.quizzes.length > 0) ? (
             <div className="space-y-3">
               {[
-                ...(dashboardData.recentActivity.documents || []).map(
-                  (doc) => ({
+                ...(dashboardData.recentActivity.documents || []).map(doc => ({
                     id: doc._id,
                     description: doc.title,
                     timestamp: doc.lastAccessed,
                     link: `/documents/${doc._id}`,
-                    type: "document",
-                  }),
-                ),
-                ...(dashboardData.recentActivity.quizzes || []).map((quiz) => ({
+                    type: 'document',
+                  })),
+                ...(dashboardData.recentActivity.quizzes || []).map(quiz => ({
                   id: quiz._id,
                   description: quiz.title,
                   timestamp: quiz.lastAttempted,
                   link: `/quizzes/${quiz._id}`,
                   type: "quiz",
-                })),
+                }))
               ]
                 .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
                 .map((activity, index) => (
-                  <div key={activity.id || index} 
-                  className="group flex items-center justify-between p-4 rounded-xl bg-slate-50/50 border border-slate-200/60 hover:bg-white hover:border-slate-300/60 hover:shadow-md transition-all duration-200">
+                  <div 
+                    key={activity.id || index} 
+                    className="group flex items-center justify-between p-4 rounded-xl bg-slate-50/50 border border-slate-200/60 hover:bg-white hover:border-slate-300/60 hover:shadow-md transition-all duration-200"
+                  >
                     <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                    <div
-                      className={`w-2 h-2 rounded-full ${
-                        activity.type === "document"
-                          ? "bg-linear-to-r from-blue-400 to-cyan-500"
-                          : "bg-linear-to-r from-emerald-400 to-teal-500"
-                      }`}
-                    />
-                    <p className="text-sm font-medium text-slate-900 truncate">
-                      {activity.type === "document"
-                        ? "Accessed Document:"
-                        : "Attempted Quiz: "}
-                      <span className="text-slate-700"> {activity.description} </span>
-                    </p>
-                    </div>
-                    <p className="text-xs text-slate-500 pl-4">
-                      {new Date(activity.timestamp).toLocaleString()}
-                    </p>
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className={`w-2 h-2 rounded-full ${
+                          activity.type === 'document'
+                            ? "bg-linear-to-r from-blue-400 to-cyan-500"
+                            : "bg-linear-to-r from-emerald-400 to-teal-500"
+                        }`} />
+                        <p className="text-sm font-medium text-slate-900 truncate">
+                          {activity.type === "document" ? 'Accessed Document: ' : 'Attempted Quiz: '}
+                          <span className="text-slate-700"> {activity.description}</span>
+                        </p>
+                      </div>
+                      <p className="text-xs text-slate-500 pl-4">
+                        {new Date(activity.timestamp).toLocaleString()}
+                      </p>
                     </div>
                     {activity.link && (
-                      <a href={activity.link} 
-                      className="ml-4 px-4 py-2 text-xs font-semibold text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-all duration-200 whitespace-nowrap">
-                        view
+                      <a 
+                        href={activity.link} 
+                        className="ml-4 px-4 py-2 text-xs font-semibold text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-all duration-200 whitespace-nowrap"
+                      >
+                        View
                       </a>
                     )}
                   </div>
@@ -187,7 +180,7 @@ const DashboardPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default DashboardPage;

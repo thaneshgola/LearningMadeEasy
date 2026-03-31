@@ -93,7 +93,7 @@ export const generateQuiz = async (req, res, next) => {
     }
 
     // Generate quiz using Gemini
-    const question = await geminiService.generateQuiz(
+    const questions = await geminiService.generateQuiz(
         document.extractedText,
         parseInt(numQuestions)
     );

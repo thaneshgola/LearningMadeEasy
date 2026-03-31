@@ -51,7 +51,7 @@ export const chunkText = (text, chunkSize = 500, overlap = 50) => {
                     pageNumber: 0
                 });
 
-                if(i + chunkSize >= paragraghWords.length) break;
+                if(i + chunkSize >= paragraphWords.length) break;
             }
             continue;
         }
@@ -70,7 +70,7 @@ export const chunkText = (text, chunkSize = 500, overlap = 50) => {
             const overlapText = prevWords.slice(-Math.min(overlap, prevWords.length)).join(' ');
 
             currentChunk = [overlapText, paragraph.trim()];
-            currentWordCOunt = overlapText.split(/\s+/).length + paragraphWordCount;
+            currentWordCount = overlapText.split(/\s+/).length + paragraphWordCount;
         } else {
             // Add paragraph to current chunk
             currentChunk.push(paragraph.trim());

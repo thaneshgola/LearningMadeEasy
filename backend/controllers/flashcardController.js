@@ -29,10 +29,10 @@ export const getAllFlashcardSets = async (req, res, next) => {
     try {
         const flashcardSets = await Flashcard.find({ userId: req.user._id })
             .populate('documentId', 'title')
-            .sort({ creatAt: -1});
+            .sort({ createdAt: -1 });
 
         res.status(200).json({
-            succes: true,
+            success: true,
             count: flashcardSets.length,
             data: flashcardSets,
         });
@@ -64,14 +64,14 @@ export const reviewFlashcard = async (req, res, next) => {
         if(cardIndex === -1) {
             return res.status(404).json({
                 success: false,
-                error: 'Card not founf in set',
+                error: 'Card not found in set',
                 statusCode: 404
             });
         }
 
         // Update review info
         flashcardSet.cards[cardIndex].lastReviewed = new Date();
-        flashcardSet.cards[cardIndex].reviewCOunt += 1;
+        flashcardSet.cards[cardIndex].reviewCount += 1;
 
         await flashcardSet.save();
 
@@ -114,7 +114,7 @@ export const toggleStarFlashcard = async (req, res, next) => {
         }
 
         // Toggle star
-        flashcardSet.cards[cardIndex].isStarred = !flashcardSet.cards[cardindex].isStarred;
+        flashcardSet.cards[cardIndex].isStarred = !flashcardSet.cards[cardIndex].isStarred;
 
         await flashcardSet.save();
 

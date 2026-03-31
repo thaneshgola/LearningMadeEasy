@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import Sidebar from './Sidebar.jsx';
+import Sidebar from './Sidebar';
 import Header from './Header';
-
 
 const AppLayout = ({children}) => {
     
-    const [isSidebarOpen, setisSidebarOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
-        setisSidebarOpen(!isSidebarOpen)
+        setIsSidebarOpen(!isSidebarOpen)
     }
     return (
         <div className="flex h-screen bg-neutral-50 text-neutral-900">

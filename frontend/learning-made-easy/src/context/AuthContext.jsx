@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
             if(token && userStr) {
                 const userData = JSON.parse(userStr);
                 setUser(userData);
-                setisAuthenticated(true);
+                setIsAuthenticated(true);
             }
         } catch (error) {
             console.error('Auth check failed', error);
@@ -43,16 +43,16 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('user', JSON.stringify(userData));
 
         setUser(userData);
-        setisAuthenticated(true);
+        setIsAuthenticated(true);
     };
 
     const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
 
-    setUser(null);
-    setIsAuthenticated(false);
-    window.location.href = '/';
+        setUser(null);
+        setIsAuthenticated(false);
+        window.location.href = '/';
     };
 
     const updateUser = (updatedUserData) => {

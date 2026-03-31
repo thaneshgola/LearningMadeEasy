@@ -30,7 +30,7 @@ const DocumentListPage = () => {
       toast.error("Failed to fetch documents.");
       console.error(error);
     } finally {
-      setLoading(flase);
+      setLoading(false);
     }
   };
 

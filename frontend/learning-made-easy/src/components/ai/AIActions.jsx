@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Sparkles, BookOpen, Lightbulb } from "lucide-react";
-import aiService from "../services/aiService";
+import aiService from "../../services/aiService";
 import toast from "react-hot-toast";
 import MarkdownRenderer from "../common/MarkdownRenderer";
+import Modal from "../common/Modal";
 
 const AIActions = () => {
 
@@ -22,7 +23,7 @@ const AIActions = () => {
       setModalContent(summary);
       setIsModalOpen(true);
     } catch (error) {
-      toast.error("Failed to generate summary.");
+      toast.error(error?.response?.data?.message || "Failed to generate summary.");
     } finally {
         setLoadingAction(null);
     }
@@ -71,7 +72,7 @@ const AIActions = () => {
 
             <div className="p-6 space-y-6">
                 {/* Generate Summary */}
-                <div classNmae="group p-5 bg-linear-to-br from-slate-50/50 to-white rounded-xl border border-slate-200/60 hover:border-slate-300/60 hover:shadow-md transition-all duration-200">
+                <div className="group p-5 bg-linear-to-br from-slate-50/50 to-white rounded-xl border border-slate-200/60 hover:border-slate-300/60 hover:shadow-md transition-all duration-200">
                     <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">

@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const MarkdownRenderer = () => {
+const MarkdownRenderer = ({content}) => {
     return (
         <div className="text-neutral-700">
             <ReactMarkdown

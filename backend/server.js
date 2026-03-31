@@ -29,7 +29,7 @@ connectDB();
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -49,10 +49,7 @@ app.use('/api/documents', documentRoutes);
 app.use('/api/flashcards', flashcardRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/quizzes', quizRoutes);
-app.use('/api/progess', progressRoutes);
-
-
-app.use(errorHandler);
+app.use('/api/progress', progressRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -62,6 +59,10 @@ app.use((req, res) => {
     statusCode: 404
   });
 });
+
+app.use(errorHandler);
+
+
 
 // Start server
 const PORT = process.env.PORT || 8000;

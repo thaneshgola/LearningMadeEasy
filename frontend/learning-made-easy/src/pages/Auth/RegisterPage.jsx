@@ -25,7 +25,7 @@ const RegisterPage = () => {
     setLoading(true);
     try {
       await authService.register(username, email, password);
-      toast.success('Registration is successful! Please Login.');
+      toast.success('Registration successful! Please Login.');
       navigate('/login');
     }
     catch (err) {
@@ -41,7 +41,7 @@ const RegisterPage = () => {
     <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-slate-50 via-white to-slate-50">
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-30" />
 
-      <div className="realtive w-full max-w-md px-6" >
+      <div className="relative w-full max-w-md px-6" >
         <div className="bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-3xl shadow-xl shadow-slate-200/50 p-10" >
           {/* Header */}
           <div className="text-center mb-10" >
@@ -60,7 +60,7 @@ const RegisterPage = () => {
           <div className="space-y-5">
             {/* Username Field */}
             <div className="space-y-2">
-              <label className="block text-xs font-semifold text-slate-700 uppercase tracking-wide">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
                 Username
               </label>
               <div className="relative group">
@@ -87,7 +87,7 @@ const RegisterPage = () => {
 
             {/* Email Field */}
             <div className="space-y-2">
-              <label className="block text-xs font-semifold text-slate-700 uppercase tracking-wide">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
                 Email
               </label>
               <div className="relative group">
@@ -133,7 +133,7 @@ const RegisterPage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   onFocus={() => setFocusedField("password")}
                   onBlur={() => setFocusedField(null)}
-                  className="w-full h-12 pl-12 pr-4 border-2 broder-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-sm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-emerald-500/10"
+                  className="w-full h-12 pl-12 pr-4 border-2 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-sm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-emerald-500/10"
                   placeholder="........"
                 />
               </div>

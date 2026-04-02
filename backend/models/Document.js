@@ -59,7 +59,7 @@ const documentSchema = new mongoose.Schema({
 });
 
 // Index for faster queries
-documentSchema.index({ urserId: 1, uploadDate: -1 });
+documentSchema.index({ userId: 1, uploadDate: -1 });
 
 const Document = mongoose.model('Document', documentSchema);
 

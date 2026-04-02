@@ -209,7 +209,7 @@ export const deleteDocument = async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        error: 'Document deleted successfully'
+        message: 'Document deleted successfully'
     });
   } catch (error) {
     next(error);

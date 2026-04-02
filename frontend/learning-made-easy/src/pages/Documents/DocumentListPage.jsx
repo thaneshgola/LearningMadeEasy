@@ -106,7 +106,7 @@ const DocumentListPage = () => {
       return (
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center max-w-md">
-            <div className="inline-flex items-center jusitfy-center w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 shadow-lg shadow-slate-200/50 mb-6">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 shadow-lg shadow-slate-200/50 mb-6">
               <FileText
                 className="w-10 h-10 text-slate-400"
                 strokeWidth={1.5}
@@ -196,7 +196,7 @@ const DocumentListPage = () => {
           <form onSubmit={handleUpload} className="space-y-5">
             {/* Title Input */}
             <div className="space-y-2">
-              <label className="block text-sx font-semibold text-slate-700 uppercase tracking-wide">
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
                 Document Title
               </label>
               <input

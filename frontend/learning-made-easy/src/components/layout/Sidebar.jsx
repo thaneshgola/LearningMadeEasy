@@ -85,7 +85,7 @@ const Sidebar = ({isSidebarOpen, toggleSidebar}) => {
                 <LogOut 
                     size={18} 
                     strokeWidth={2.5} 
-                    className="tarnsition-transform duration-200 group-hover:scale-110" 
+                    className="transition-transform duration-200 group-hover:scale-110" 
                 />
                 Logout
             </button>

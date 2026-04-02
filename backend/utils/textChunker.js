@@ -1,5 +1,5 @@
 /**
- * Split text into chunks for better AI pocessing
+ * Split text into chunks for better AI processing
  * @param {string} text - Full text to chunk
  * @param {number} chunkSize = Target size per chunk (in words)
  * @param {number} overlap - Number of words to overlap between chunks

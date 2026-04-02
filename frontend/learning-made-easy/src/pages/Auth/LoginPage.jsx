@@ -26,8 +26,8 @@ const LoginPage = () => {
       toast.success('Logged in successfully!');
       navigate('/dashboard');
     } catch(err) {
-      setError(err.message || 'Failed to login. Please check your credentials.');
-      toast.error(err.message || 'Failed to login.');
+      setError(err.message || 'Failed to log in. Please check your credentials.');
+      toast.error(err.message || 'Failed to log in.');
     } finally {
       setLoading(false);
     }
@@ -38,7 +38,7 @@ const LoginPage = () => {
 
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-30" />
 
-        <div className="realtive w-full max-w-md px-6" >
+        <div className="relative w-full max-w-md px-6" >
           <div className="bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-3xl shadow-xl shadow-slate-200/50 p-10" >
             {/* Header */}
             <div className="text-center mb-10" >
@@ -137,7 +137,7 @@ const LoginPage = () => {
               Don't have an account?{' '}
               <Link to='/register' className="font-semibold text-emerald-600 hover:text-emerald-700 transition-colors duration-200">
                 Sign up
-              </Link>"
+              </Link>
             </p>
           </div>
         </div>

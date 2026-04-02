@@ -53,7 +53,7 @@ const DashboardPage = () => {
     },
     {
       label: "Total Flashcards",
-      value: dashboardData.overview.totalFlashCards,
+      value: dashboardData.overview.totalFlashcards,
       icon: BookOpen,
       gradient: "from-purple-400 to-pink-500",
       shadowColor: "shadow-purple-500/25",

@@ -68,7 +68,7 @@ export const login = async (req, res, next) => {
         // Validate input
         if (!email || !password) {
             return res.status(400).json({
-                succes: false,
+                success: false,
                 error: "Please provide valid email and password",
                 statusCode: 400
             });
@@ -80,7 +80,7 @@ export const login = async (req, res, next) => {
         if (!user) {
             return res.status(401).json({
                 success: false,
-                error: "Invaid credentials",
+                error: "Invalid credentials",
                 statusCode: 401,
             });
         }
@@ -202,7 +202,7 @@ export const changePassword = async (req, res, next) => {
 
         res.status(200).json({
             success: true,
-            message: "Password changes successfully"
+            message: "Password changed successfully"
         });
     } catch (error) {
         next(error);

@@ -21,13 +21,13 @@ const flashcardSchema = new mongoose.Schema(
             enum: ['easy', 'medium', 'hard'],
             default: 'medium',
         },
-        lastReceived: {
+        lastReviewed: {
             type: Date,
             default: null,
         },
         reviewCount: {
             type: Number,
-            defaukt: 0,
+            default: 0,
         },
         isStarred: {
             type: Boolean,

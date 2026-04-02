@@ -55,7 +55,7 @@ const quizSchema = new mongoose.Schema({
     },
     answeredAt: {
         type: Date,
-        deault: Date.now
+        default: Date.now
     }
   }],
   score: {
@@ -75,7 +75,7 @@ const quizSchema = new mongoose.Schema({
 });
 
 // Index for faster queries
-quizSchema.index({ userID: 1, documentId: 1 });
+quizSchema.index({ userId: 1, documentId: 1 });
 
 const Quiz = mongoose.model('Quiz', quizSchema);
 

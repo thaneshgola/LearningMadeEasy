@@ -27,9 +27,21 @@ const app = express();
 connectDB();
 
 // Middleware to handle CORS
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.FRONTEND_URL,  // your Vercel URL, set in Render env vars
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -41,7 +53,7 @@ app.use(express.urlencoded({ extended : true }));
 
 
 // Static folders for uploads
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Routes
 app.use('/api/auth', authRoutes);

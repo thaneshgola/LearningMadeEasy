@@ -34,20 +34,25 @@ const DocumentDetailPage = () => {
     fetchDocumentDetails();
   }, [id]);
 
-  // Helper function to get the full PDF URL
   const getPdfUrl = () => {
     if (!document?.data?.filePath) return null;
 
     const filePath = document.data.filePath;
 
+    // Wrap any URL (Cloudinary or local) in Google PDF viewer
     if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
-      return filePath;
+      return `https://docs.google.com/viewer?url=${encodeURIComponent(filePath)}&embedded=true`;
     }
 
-    const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
-    return `${baseUrl}${filePath.startsWith('/') ? '' : '/'}${filePath}`;
+    // Local development fallback
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const fullUrl = `${baseUrl}${filePath.startsWith('/') ? '' : '/'}${filePath}`;
+    return `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`;
   };
 
+  const getRawPdfUrl = () => {
+  return document?.data?.filePath || null;
+};
   const renderContent = () => {
     if (loading) {
       return <Spinner />;
@@ -63,7 +68,7 @@ const DocumentDetailPage = () => {
         <div className="flex items-center justify-between p-4 bg-gray-50 border-b border-gray-300">
           <span className="text-sm font-medium text-gray-700">Document Viewer</span>
           <a
-            href={pdfUrl}
+            href={`https://docs.google.com/viewer?url=${encodeURIComponent(getRawPdfUrl())}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
